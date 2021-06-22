@@ -11,3 +11,7 @@ How to:
 - "minio": "^7.0.18"  - update this as per your need
 - build the sample code
 - 
+
+Compile or run instrunctions
+
+node <file-path.js>  to run the script
