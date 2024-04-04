@@ -9,28 +9,26 @@ var minioClient = new Minio.Client({
     secretKey: 'minio123'
 });
 
-
+const uploadImage = () =>{
 var file = "/home/prakash/Pictures/1.png"
-
-/*
-minioClient.putObject("sph-my-bucket", "dir/image.jpg", file, 
-  function(err, objectInfo) {
-    if (err) return console.log(err);
-    console.log("File uploaded successfully.", objectInfo);
-  })
- */
 
   var fileStream = Fs.createReadStream(file)
   var metadata = {
     "content-type": ''
   }
-  var fileStat = Fs.stat(file, function(err, stats) {
+  var fileStat = Fs.stat(file, async function(err, stats) {
     if(err) { 
       return console.log('error') 
     }
-    minioClient.putObject("test-bucket", "1.png", fileStream, stats.size,
-    function(err, objectInfo) {
-      if (err) return console.log(err);
-      console.log("File uploaded successfully1.", objectInfo);
+   
+    try{
+    await minioClient.putObject("test-tag-bucket", "1.png", fileStream, stats.size,{
+        "x-amz-tagging":"Key1=Value1"
     })
+  }catch(err){
+    console.log("Error", err)
+  }
   })
+}
+
+uploadImage()
