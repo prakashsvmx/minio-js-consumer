@@ -10,7 +10,7 @@ var minioClient = new Minio.Client({
 });
 
 const uploadImage = () =>{
-var file = "/home/prakash/Pictures/1.png"
+var file = "/home/prakash/tmpwork/1.txt"
 
   var fileStream = Fs.createReadStream(file)
   var metadata = {
@@ -22,7 +22,7 @@ var file = "/home/prakash/Pictures/1.png"
     }
    
     try{
-    await minioClient.putObject("test-tag-bucket", "1.png", fileStream, stats.size,{
+    await minioClient.putObject("test-bucket", "rfc3986-filename_test (123)äöü 🥳.txt", fileStream, stats.size,{
         "x-amz-tagging":"Key1=Value1"
     })
   }catch(err){
