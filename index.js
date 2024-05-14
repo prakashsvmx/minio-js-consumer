@@ -1,8 +1,9 @@
 var Minio = require('minio')
+var Fs = require('fs')
 
 var minioClient = new Minio.Client({
     endPoint: 'localhost',
-    port: 9000,
+    port: 22000,
     useSSL: false,
     accessKey: 'minio',
     secretKey: 'minio123'

@@ -13,6 +13,6 @@
   "author": "sph.prakash@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "minio": "^7.0.18"
+    "minio": "^7.1.3"
   }
 }
